@@ -1,0 +1,9 @@
+<div>
+    <table>
+        <td [width]="'90%'"><p routerLink="/">Logo</p></td>
+        <td *ngIf="!isUserLoggedIn()" [width]="'10%'"><p routerLink="/login">Login</p></td>
+        <td *ngIf="isUserLoggedIn()" [width]="'10%'"><p routerLink="/account">Account</p></td>
+        <td *ngIf="isUserLoggedIn()" [width]="'10%'"><p routerLink="/cart">Cart</p></td>
+        <td *ngIf="isUserLoggedIn()" [width]="'10%'" (click)="logout()">Logout</td>
+    </table>
+</div>
