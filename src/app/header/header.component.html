@@ -1,6 +1,12 @@
 <div>
     <table>
-        <td [width]="'90%'"><p routerLink="/">Logo</p></td>
+        <td [width]="'80%'"><p routerLink="/">Logo</p></td>
+        <td [width]="'10%'">
+            <form [formGroup]="searchForm" (ngSubmit)="search()">
+                <input type="text" [formControlName]="'term'">
+                <input type="submit" name="Search">
+            </form> 
+        </td>
         <td *ngIf="!isUserLoggedIn()" [width]="'10%'"><p routerLink="/login">Login</p></td>
         <td *ngIf="isUserLoggedIn()" [width]="'10%'"><p routerLink="/account">Account</p></td>
         <td *ngIf="isUserLoggedIn()" [width]="'10%'"><p routerLink="/cart">Cart</p></td>

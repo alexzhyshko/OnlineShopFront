@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import { ReviewComponent } from './review/review.component';
 import { SearchComponent } from './search/search.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CategorySearchComponent } from './category-search/category-search.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -30,9 +31,10 @@ const routes: Routes = [
   {path: 'review', component: ReviewComponent, children: [
     {path: '**', component: ReviewComponent}
   ]},
-  {path: 'search', component: SearchComponent, children: [
-    {path: '**', component: ReviewComponent}
+  {path: 'c', children: [
+    {path: '**', component: CategorySearchComponent},
   ]},
+  {path: 'search', component: SearchComponent},
   {path: '', component: HomepageComponent}
 ];
 

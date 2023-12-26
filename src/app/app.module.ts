@@ -17,6 +17,7 @@ import { ReviewComponent } from './review/review.component';
 import { PastOrdersComponent } from './past-orders/past-orders.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CategorySearchComponent } from './category-search/category-search.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     OrderConfirmationComponent,
     ReviewComponent,
     PastOrdersComponent,
-    HomepageComponent
+    HomepageComponent,
+    CategorySearchComponent
   ],
   imports: [
     BrowserModule,
