@@ -31,6 +31,9 @@ export class CheckoutComponent implements OnInit{
   }
 
   ngOnInit() {
+    if(this.userService.getCurrentUser().cart?.cartEntryList?.length === 0) {
+      this.router.navigate(['/'])
+    }
     this.checkoutForm = new FormGroup({
       useNonDefaultAddress: new FormControl('NO'),
       streetName: new FormControl(''),
@@ -60,7 +63,9 @@ export class CheckoutComponent implements OnInit{
     this.createOrderRequest.paymentMode = PaymentMode[this.checkoutForm.get('paymentMode')?.value]
 
     this.orderService.createOrder(this.userService.getToken()!, this.createOrderRequest).subscribe(
-      data => data.paymentMode === "CASH" ? this.router.navigate(['/']) : this.router.navigate(['/payment']),
+      data => data.paymentMode === "CASH" ? 
+      this.router.navigate(['/order-confirmation', data.externalId]) 
+      : this.router.navigate(['/payment', data.externalId]),
       error => console.log(error)
     )
     

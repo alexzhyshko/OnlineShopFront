@@ -19,22 +19,12 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'account', component: AccountComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'order-confirmation', component: OrderConfirmationComponent, children: [
-    {path: '**', component: OrderConfirmationComponent}
-  ]},
+  {path: 'order-confirmation/:orderId', component: OrderConfirmationComponent},
   {path: 'past-orders', component: PastOrdersComponent},
-  {path: 'payment', component: PaymentComponent, children: [
-    {path: '**', component: PaymentComponent}
-  ]},
-  {path: 'product', component: ProductComponent, children: [
-    {path: '**', component: ProductComponent}
-  ]},
-  {path: 'review', component: ReviewComponent, children: [
-    {path: '**', component: ReviewComponent}
-  ]},
-  {path: 'c', children: [
-    {path: '**', component: CategorySearchComponent},
-  ]},
+  {path: 'payment/:orderId', component: PaymentComponent},
+  {path: 'product/:productId', component: ProductComponent},
+  {path: 'review/:orderId', component: ReviewComponent},
+  {path: 'c/:categoryId', component: CategorySearchComponent},
   {path: 'search', component: SearchComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: '', component: HomepageComponent}

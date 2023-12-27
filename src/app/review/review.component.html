@@ -1,1 +1,8 @@
-<p>review works!</p>
+<div>
+    <p>{{orderData!.orderEntries![currentEntryIndex].product?.name}}</p>
+    <form [formGroup]="reviewForm" (ngSubmit)="sendReview()">
+    <input type="text" [formControlName]="'mark'" placeholder="Mark">
+    <input type="text" [formControlName]="'text'" placeholder="Text">
+    <input type="submit" value="Review">
+</form>
+</div>

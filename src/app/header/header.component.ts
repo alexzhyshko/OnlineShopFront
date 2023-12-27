@@ -16,10 +16,6 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private searchService: SearchService) { }
 
   ngOnInit() {
-    if (this.userService.isLoggedIn()) {
-      this.router.navigate(['/'])
-    }
-
     this.searchForm = new FormGroup({
       term: new FormControl('', [Validators.required]),
     })

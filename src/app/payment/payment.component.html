@@ -1,1 +1,8 @@
-<p>payment works!</p>
+<div>
+    <form [formGroup]="paymentForm" (ngSubmit)="pay()">
+    <input type="text" [formControlName]="'cardNumber'" placeholder="cardNumber">
+    <input type="text" [formControlName]="'date'" placeholder="date">
+    <input type="number" [formControlName]="'cvv'" placeholder="cvv">
+    <input type="submit" value="Pay">
+</form>
+</div>
