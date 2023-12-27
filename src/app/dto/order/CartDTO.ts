@@ -4,9 +4,9 @@ import { DeliveryMode } from "./DeliveryMode";
 import { PaymentMode } from "./PaymentMode";
 
 export interface CartDTO {
-    paymentMode: PaymentMode;
-    deliveryMode: DeliveryMode;
+    paymentMode: string;
+    deliveryMode: string;
     externalId: string;
-    cartEntryList: CartEntryDTO[];
-    address: AddressDTO;
+    cartEntryList?: CartEntryDTO[];
+    address?: AddressDTO;
 }

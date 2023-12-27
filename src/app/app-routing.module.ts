@@ -12,6 +12,7 @@ import { ReviewComponent } from './review/review.component';
 import { SearchComponent } from './search/search.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CategorySearchComponent } from './category-search/category-search.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
     {path: '**', component: CategorySearchComponent},
   ]},
   {path: 'search', component: SearchComponent},
+  {path: 'checkout', component: CheckoutComponent},
   {path: '', component: HomepageComponent}
 ];
 

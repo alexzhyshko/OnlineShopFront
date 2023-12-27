@@ -1,0 +1,31 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="createOrder()">
+    <div>
+        <input type="radio" name="useNonDefaultAddress" id="add-0" value="YES"
+            [formControlName]="'useNonDefaultAddress'">
+        <label for="add-0">Use another address</label>
+        <input type="radio" name="useNonDefaultAddress" id="add-1" value="NO"
+            [formControlName]="'useNonDefaultAddress'">
+        <label for="add-1">Use my address</label>
+    </div>
+    <div *ngIf="checkoutForm.get('useNonDefaultAddress')?.value == 'YES'">
+        <input type="text" [formControlName]="'streetName'" placeholder="streetName">
+        <input type="text" [formControlName]="'streetNumber'" placeholder="streetNumber">
+        <input type="text" [formControlName]="'streetAdditive'" placeholder="streetAdditive">
+        <input type="text" [formControlName]="'room'" placeholder="room">
+        <input type="text" [formControlName]="'city'" placeholder="city">
+        <input type="text" [formControlName]="'additionalInfo'" placeholder="additionalInfo">
+    </div>
+    <div>
+        <input type="radio" name="deliveryMode" id="dm-0" value="0" [formControlName]="'deliveryMode'">
+        <label for="dm-0">HOME</label>
+        <input type="radio" name="deliveryMode" id="dm-1" value="1" [formControlName]="'deliveryMode'">
+        <label for="dm-1">PICKUP</label>
+    </div>
+    <div>
+        <input type="radio" name="paymentMode" id="pm-0" value="0" [formControlName]="'paymentMode'">
+        <label for="pm-0">ONLINE</label>
+        <input type="radio" name="paymentMode" id="pm-1" value="1" [formControlName]="'paymentMode'">
+        <label for="pm-1">CASH</label>
+    </div>
+    <input type="submit" value="Proceed" />
+</form>

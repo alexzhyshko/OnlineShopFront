@@ -18,6 +18,7 @@ import { PastOrdersComponent } from './past-orders/past-orders.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CategorySearchComponent } from './category-search/category-search.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CategorySearchComponent } from './category-search/category-search.compo
     ReviewComponent,
     PastOrdersComponent,
     HomepageComponent,
-    CategorySearchComponent
+    CategorySearchComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

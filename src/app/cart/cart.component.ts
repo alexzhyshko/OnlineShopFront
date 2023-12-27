@@ -12,7 +12,7 @@ import { UserService } from '../service/user/user.service';
 })
 export class CartComponent implements OnInit {
 
-  products?: ProductDTO[];
+  products: ProductDTO[] = [];
   term?: string;
 
   constructor(private userService: UserService, private searchService: SearchService,
@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.cartService.get(this.userService.getToken()!).subscribe(
-      data => this.products = data.cartEntryList.map(x => x.product),
+      data => this.products = data.cartEntryList!.map(x => x.product),
       error => console.log(error)
     );
   }
@@ -31,9 +31,15 @@ export class CartComponent implements OnInit {
 
   loadCart() {
     this.cartService.get(this.userService.getToken()!).subscribe(
-      data => this.products = data.cartEntryList.map(x => x.product),
+      data => this.products = data.cartEntryList!.map(x => x.product),
       error => console.log(error)
     );
+  }
+
+  checkout() {
+    if(this.products.length > 0) {
+      this.router.navigate(['/checkout'])
+    }
   }
 
 }

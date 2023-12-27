@@ -1,3 +1,6 @@
-<div>
-    <li *ngFor="let product of products" (click)="addToCart(product.externalId)">{{product.name}}</li>
+<div li *ngFor="let product of products">
+    <li>{{product.name}}</li>
+    <li>{{product.externalId}}</li>
+    <li>{{product.price}}</li>
+    <li (click)="addToCart(product.externalId)">Add to cart</li>
 </div>

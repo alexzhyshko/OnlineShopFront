@@ -9,9 +9,9 @@ export interface OrderDTO {
     externalId: string;
     orderEntries: OrderEntryDTO[];
     timeCreated: Date;
-    orderStatus: OrderStatus;
-    paymentStatus: PaymentStatus;
-    paymentMode: PaymentMode;
-    deliveryMode: DeliveryMode;
+    orderStatus: string;
+    paymentStatus: string;
+    paymentMode: string;
+    deliveryMode: string;
     address: AddressDTO;
 }

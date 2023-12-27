@@ -1,3 +1,10 @@
-<div>
-    <li *ngFor="let product of products" (click)="removeFromCart(product.externalId)">{{product.name}}</li>
+<div li *ngFor="let product of products">
+    <li>{{product.name}}</li>
+    <li>{{product.externalId}}</li>
+    <li>{{product.price}}</li>
+    <li (click)="removeFromCart(product.externalId)">Remove From Cart</li>
+</div>
+
+<div *ngIf="products.length > 0">
+    <a (click)="checkout()">Checkout</a>
 </div>
