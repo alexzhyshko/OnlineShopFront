@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private searchService: SearchService) { }
 
   ngOnInit() {
+    this.userService.getCurrentUser
     this.searchForm = new FormGroup({
       term: new FormControl('', [Validators.required]),
     })

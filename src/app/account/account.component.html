@@ -1,1 +1,16 @@
 <p>account works!</p>
+
+<form [formGroup]="accountForm" (ngSubmit)="changeData()">
+    <input type="text" [formControlName]="'email'" placeholder="email">
+    <input type="text" [formControlName]="'firstName'" placeholder="firstName">
+    <input type="text" [formControlName]="'lastName'" placeholder="lastName">
+    <input type="text" [formControlName]="'streetName'" placeholder="streetName">
+    <input type="text" [formControlName]="'streetNumber'" placeholder="streetNumber">
+    <input type="text" [formControlName]="'streetAdditive'" placeholder="streetAdditive">
+    <input type="text" [formControlName]="'room'" placeholder="room">
+    <input type="text" [formControlName]="'city'" placeholder="city">
+    <input type="text" [formControlName]="'additionalInfo'" placeholder="additionalInfo">
+    <input type="submit" value="Change"/>
+</form> 
+
+<a routerLink="/past-orders">See past orders</a>

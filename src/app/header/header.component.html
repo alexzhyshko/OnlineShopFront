@@ -1,15 +1,41 @@
-<div>
+<!-- <div>
     <table>
-        <td [width]="'80%'"><p routerLink="/">Logo</p></td>
+        <td [width]="'80%'">
+            <p routerLink="/">Logo</p>
+        </td>
         <td [width]="'10%'">
             <form [formGroup]="searchForm" (ngSubmit)="search()">
                 <input type="text" [formControlName]="'term'">
                 <input type="submit" name="Search">
-            </form> 
+            </form>
         </td>
-        <td *ngIf="!isUserLoggedIn()" [width]="'10%'"><p routerLink="/login">Login</p></td>
-        <td *ngIf="isUserLoggedIn()" [width]="'10%'"><p routerLink="/account">Account</p></td>
-        <td *ngIf="isUserLoggedIn()" [width]="'10%'"><p routerLink="/cart">Cart</p></td>
+        <td *ngIf="!isUserLoggedIn()" [width]="'10%'">
+            <p routerLink="/login">Login</p>
+        </td>
+        <td *ngIf="isUserLoggedIn()" [width]="'10%'">
+            <p routerLink="/account">Account</p>
+        </td>
+        <td *ngIf="isUserLoggedIn()" [width]="'10%'">
+            <p routerLink="/cart">Cart</p>
+        </td>
         <td *ngIf="isUserLoggedIn()" [width]="'10%'" (click)="logout()">Logout</td>
     </table>
-</div>
+</div> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="topnav">
+    <a routerLink="/">ЛІТЕРАТОР</a>
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    <div class="header-right">
+        <a class="active" *ngIf="isUserLoggedIn()" routerLink="/cart">Cart</a>
+        <a *ngIf="!isUserLoggedIn()" routerLink="/login">Login</a>
+        <a *ngIf="isUserLoggedIn()" routerLink="/account">Account</a>
+        <a *ngIf="isUserLoggedIn()" (click)="logout()">Logout</a>
+    </div>
+  </div>

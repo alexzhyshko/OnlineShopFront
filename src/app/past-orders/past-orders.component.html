@@ -1,1 +1,4 @@
-<p>past-orders works!</p>
+<div *ngFor="let order of orders">
+    <p>{{order.externalId}}</p>
+    <a routerLink="/review/{{order.externalId}}">Leave review</a>
+</div>
