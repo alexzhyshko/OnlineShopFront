@@ -1,0 +1,100 @@
+.Items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.Item {
+    padding: 20px 0;
+    width: 30%;
+    transition: box-shadow, 0.4s, ease-in-out;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+}
+
+@media (max-width: 1050px) {
+
+    background #fff,
+    .Item {
+        width: 48%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    background #fff,
+    .Item {
+        width: 100%;
+    }
+}
+
+:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.Item__link {
+    text-decoration: none;
+}
+
+.Item__title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9em;
+    color: black;
+    width: 90%;
+    margin: 20px auto 0;
+}
+
+.Item__price {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9em;
+    margin-top: 10px;
+    color: black;
+}
+
+.ImageContainer {
+    width: 200px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Image {
+    width: 200px;
+    height: auto;
+}
+
+.Item__addtocart {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9em;
+    margin-top: 10px;
+    color: white;
+    background-color: #081544;
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+h1 {
+    color: #081544;
+    font-size: 24px;
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.body {
+    margin-top: 100px;
+}

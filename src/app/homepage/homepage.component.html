@@ -1,6 +1,29 @@
-<div li *ngFor="let product of products">
-    <li>{{product.name}}</li>
-    <li>{{product.externalId}}</li>
-    <li>{{product.price}}</li>
-    <li (click)="addToCart(product.externalId)">Add to cart</li>
+<div class="w3-sidebar w3-bar-block w3-border-right w3-border-black" id="mySidebar">
+    <a *ngFor="let category of categories" class="w3-bar-item w3-button"
+        routerLink="/c/{{category.externalId}}">{{category.name}}</a>
+</div>
+
+
+
+<div class="banner">
+    <img src="../../assets/banner.png">
+</div>
+
+<div class="body">
+    <h2 class="title">Рекомендуємо переглянути</h2>
+    <div class="Items">
+
+        <div *ngFor="let product of products" class="Item">
+            <a routerLink="/product/{{product.externalId}}" class="Item__link">
+                <div class="ImageContainer">
+                    <img src="{{product.imageLink}}" class="Image">
+                </div>
+                <div class="Item__title">{{product.name}}</div>
+                <div class="Item__price">{{product.price}}</div>
+            </a>
+            <div class="Item__addtocart" (click)="addToCart(product.externalId)">Додати у кошик</div>
+
+        </div>
+
+    </div>
 </div>

@@ -1,6 +1,18 @@
-<div li *ngFor="let product of products">
-    <li>{{product.name}}</li>
-    <li>{{product.externalId}}</li>
-    <li>{{product.price}}</li>
-    <li (click)="addToCart(product.externalId)">Add to cart</li>
+<div class="body">
+    <h2 class="title">Результати пошуку</h2>
+    <div class="Items">
+
+        <div *ngFor="let product of products" class="Item">
+            <a routerLink="/product/{{product.externalId}}" class="Item__link">
+                <div class="ImageContainer">
+                    <img src="{{product.imageLink}}" class="Image">
+                </div>
+                <div class="Item__title">{{product.name}}</div>
+                <div class="Item__price">{{product.price}}</div>
+            </a>
+            <div class="Item__addtocart" (click)="addToCart(product.externalId)">Додати у кошик</div>
+
+        </div>
+
+    </div>
 </div>

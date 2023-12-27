@@ -4,6 +4,8 @@ import { ProductDTO } from '../dto/product/ProductDTO';
 import { Router } from '@angular/router';
 import { CartService } from '../service/cart/cart.service';
 import { UserService } from '../service/user/user.service';
+import { CategoryDTO } from '../dto/product/CategoryDTO';
+import { CategoryService } from '../service/category/category.service';
 
 @Component({
   selector: 'app-homepage',
@@ -13,14 +15,20 @@ import { UserService } from '../service/user/user.service';
 export class HomepageComponent implements OnInit {
 
   products?: ProductDTO[];
+  categories?: CategoryDTO[];
 
   constructor(private userService: UserService, private recommendationService: RecommendationService,  
-    private router: Router, private cartService: CartService) { }
+    private router: Router, private cartService: CartService, private categoryService: CategoryService) { }
 
   ngOnInit() {
+    const token = this.userService.getToken()!;
     this.recommendationService.getRecommendations().subscribe(
       data => this.products = data, 
       error => console.log("Error: "+error))
+    this.categoryService.getCategories(token).subscribe(
+      data => this.categories = data.slice(0, 5),
+      error => error
+    )
   }
 
   addToCart(id: string) {
