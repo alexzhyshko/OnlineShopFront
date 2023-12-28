@@ -1,31 +1,67 @@
-<form [formGroup]="checkoutForm" (ngSubmit)="createOrder()">
-    <div>
-        <input type="radio" name="useNonDefaultAddress" id="add-0" value="YES"
-            [formControlName]="'useNonDefaultAddress'">
-        <label for="add-0">Use another address</label>
-        <input type="radio" name="useNonDefaultAddress" id="add-1" value="NO"
-            [formControlName]="'useNonDefaultAddress'">
-        <label for="add-1">Use my address</label>
+<div class="body">
+    <div class="form-container">
+        <form [formGroup]="checkoutForm" (ngSubmit)="createOrder()">
+            <h3 >Адреса</h3>
+            <div class="address-choice">
+                <input class="radio" type="radio" name="useNonDefaultAddress" id="add-1" value="NO"
+                    [formControlName]="'useNonDefaultAddress'" *ngIf="currentUser.address != null">
+                <label class="label" for="add-1" *ngIf="currentUser.address != null">Використовувати мою адресу</label>
+                <input class="radio" type="radio" name="useNonDefaultAddress" id="add-0" value="YES"
+                    [formControlName]="'useNonDefaultAddress'">
+                <label class="label" for="add-0">Увести іншу адресу</label>
+            </div>
+            <div class="address-form" *ngIf="checkoutForm.get('useNonDefaultAddress')?.value == 'YES'">
+                <label class="label" for="a-0">Вулиця</label>
+                <input class="text" type="text" [formControlName]="'streetName'" placeholder="Вулиця" id="a-0">
+                <label class="label" for="a-1">Номер будинку</label>
+                <input class="text" type="number" [formControlName]="'streetNumber'" placeholder="Номер будинку"
+                    id="a-1">
+                <label class="label" for="a-2">Додаток</label>
+                <input class="text" type="text" [formControlName]="'streetAdditive'" placeholder="Додаток"
+                    id="a-2">
+                <label class="label" for="a-3">Кімната/офіс/приміщення</label>
+                <input class="text" type="text" [formControlName]="'room'" placeholder="Кімната/офіс/приміщення" id="a-3">
+                <label class="label" for="a-4">Місто</label>
+                <input class="text" type="text" [formControlName]="'city'" placeholder="Місто" id="a-4">
+                <label class="label" for="a-5">Додаткова інформація</label>
+                <input class="text" type="text" [formControlName]="'additionalInfo'" placeholder="Додаткова інформація"
+                    id="a-5">
+            </div>
+            <h3>Тип доставки</h3>
+            <div class="address-choice">
+                <input type="radio" name="deliveryMode" id="dm-0" value="0" [formControlName]="'deliveryMode'">
+                <label for="dm-0">Доставка кур'єром</label>
+                <input type="radio" name="deliveryMode" id="dm-1" value="1" [formControlName]="'deliveryMode'">
+                <label for="dm-1">Самовивіз</label>
+            </div>
+            <h3>Тип оплати</h3>
+            <div class="address-choice">
+                <input type="radio" name="paymentMode" id="pm-0" value="0" [formControlName]="'paymentMode'">
+                <label for="pm-0">Онлайн</label>
+                <input type="radio" name="paymentMode" id="pm-1" value="1" [formControlName]="'paymentMode'">
+                <label for="pm-1">Готівкою</label>
+            </div>
+            <div class="bottom-buttons">
+                <button class="button wide" routerLink="/cart">Повернутись у кошик</button>
+                <input class="button wide" type="submit" value="Наступний крок" />
+            </div>
+
+        </form>
+
     </div>
-    <div *ngIf="checkoutForm.get('useNonDefaultAddress')?.value == 'YES'">
-        <input type="text" [formControlName]="'streetName'" placeholder="streetName">
-        <input type="text" [formControlName]="'streetNumber'" placeholder="streetNumber">
-        <input type="text" [formControlName]="'streetAdditive'" placeholder="streetAdditive">
-        <input type="text" [formControlName]="'room'" placeholder="room">
-        <input type="text" [formControlName]="'city'" placeholder="city">
-        <input type="text" [formControlName]="'additionalInfo'" placeholder="additionalInfo">
+    <div class="products">
+        <div *ngFor="let cartEntry of cartEntries" class="container">
+            <div class="image" routerLink="/product/{{cartEntry.product.externalId}}">
+                <img src="{{cartEntry.product.imageLink}}" style="width:200px">
+            </div>
+            <div class="text">
+                <h1>{{cartEntry.product.name}}</h1>
+            </div>
+            <div class="price">
+                <h1>{{cartEntry.product.price}}₴ x {{cartEntry.quantity}} = {{cartEntry.amount}}₴</h1>
+            </div>
+        </div>
+        <h2>Сума: {{cartTotal}}₴</h2>
     </div>
-    <div>
-        <input type="radio" name="deliveryMode" id="dm-0" value="0" [formControlName]="'deliveryMode'">
-        <label for="dm-0">HOME</label>
-        <input type="radio" name="deliveryMode" id="dm-1" value="1" [formControlName]="'deliveryMode'">
-        <label for="dm-1">PICKUP</label>
-    </div>
-    <div>
-        <input type="radio" name="paymentMode" id="pm-0" value="0" [formControlName]="'paymentMode'">
-        <label for="pm-0">ONLINE</label>
-        <input type="radio" name="paymentMode" id="pm-1" value="1" [formControlName]="'paymentMode'">
-        <label for="pm-1">CASH</label>
-    </div>
-    <input type="submit" value="Proceed" />
-</form>
+
+</div>

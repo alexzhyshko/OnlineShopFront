@@ -24,7 +24,6 @@ export class PaymentComponent implements OnInit{
   ngOnInit() {
     this.route.params
     .subscribe((params) => {
-      console.log(params)
       this.orderExternalId = params['orderId']
     }
     ); 

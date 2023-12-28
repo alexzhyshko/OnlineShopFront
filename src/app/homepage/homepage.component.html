@@ -1,5 +1,6 @@
 <div class="w3-sidebar w3-bar-block w3-border-right w3-border-black" id="mySidebar">
-    <a *ngFor="let category of categories" class="w3-bar-item w3-button"
+    <h1>Каталог</h1>
+    <a *ngFor="let category of categories" class="w3-bar-item w3-button category"
         routerLink="/c/{{category.externalId}}">{{category.name}}</a>
 </div>
 
@@ -12,17 +13,13 @@
 <div class="body">
     <h2 class="title">Рекомендуємо переглянути</h2>
     <div class="Items">
-
-        <div *ngFor="let product of products" class="Item">
-            <a routerLink="/product/{{product.externalId}}" class="Item__link">
-                <div class="ImageContainer">
-                    <img src="{{product.imageLink}}" class="Image">
-                </div>
-                <div class="Item__title">{{product.name}}</div>
-                <div class="Item__price">{{product.price}}</div>
+        <div *ngFor="let product of products" class="card Item">
+            <a routerLink="/product/{{product.externalId}}">
+                <img src="{{product.imageLink}}" style="width:200px">
+                <h1 class="text">{{product.name}}</h1>
+                <p class="price text">{{product.price}}₴</p>
             </a>
-            <div class="Item__addtocart" (click)="addToCart(product.externalId)">Додати у кошик</div>
-
+            <p><button (click)="addToCart(product.externalId)">Додати у кошик</button></p>
         </div>
 
     </div>

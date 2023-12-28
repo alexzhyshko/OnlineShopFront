@@ -1,1 +1,48 @@
-<p>product works!</p>
+<div class="container">
+
+    <div class="left-column">
+        <img src="{{product.imageLink}}">
+    </div>
+
+    <div class="right-column">
+
+        <div class="product-description">
+            <span>{{product.categories[0].name}}</span>
+            <h3>{{product.name}}</h3>
+        </div>
+
+        <div class="product-price">
+            <h2>{{product.price}}₴</h2>
+            <button class="cart-btn" (click)="addToCart(product.externalId)">Додати у кошик</button>
+        </div>
+        <div class="description">
+
+            <div class="desc">
+                <h6>Опис</h6>
+                <ul>
+                    <li *ngFor="let attribute of product.productAttributes">
+                        <span>{{attribute.name}}: </span>
+                        <span>{{attribute.value}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="auth">
+                <h6>Автори</h6>
+                <ul>
+                    <li *ngFor="let author of product.authors">
+                        <span>{{author.firstName}} {{author.lastName}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="publ">
+                <h6>Видавництва</h6>
+                <ul>
+                    <li *ngFor="let publisher of product.publishers">
+                        <span>{{publisher.name}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,7 +1,13 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()">
-    <input type="text" [formControlName]="'email'">
-    <input type="text" [formControlName]="'firstName'">
-    <input type="text" [formControlName]="'lastName'">
-    <input type="password" [formControlName]="'password'">
-    <input type="submit" value="Register in"/>
-</form> 
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" [formGroup]="registerForm" (ngSubmit)="register()">
+            <h1>ЛІТЕРАТОР</h1>
+            <input type="text" placeholder="Пошта" [formControlName]="'email'" />
+            <input type="text" placeholder="Ім'я" [formControlName]="'firstName'"/>
+            <input type="text" placeholder="Прізвище" [formControlName]="'lastName'"/>
+            <input type="password" placeholder="Пароль" [formControlName]="'password'" />
+            <input class="button" type="submit" value="Зареєструватись" />
+            <a routerLink="/login" class="message">Я вже маю акаунт</a>
+        </form>
+    </div>
+</div>

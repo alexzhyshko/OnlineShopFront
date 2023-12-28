@@ -1,4 +1,5 @@
 import { AddressDTO } from "../account/AddressDTO";
+import { UserDTO } from "../account/UserDTO";
 import { DeliveryMode } from "./DeliveryMode";
 import { OrderEntryDTO } from "./OrderEntryDTO";
 import { OrderStatus } from "./OrderStatus";
@@ -14,4 +15,5 @@ export interface OrderDTO {
     paymentMode?: string;
     deliveryMode?: string;
     address?: AddressDTO;
+    owner?: UserDTO;
 }

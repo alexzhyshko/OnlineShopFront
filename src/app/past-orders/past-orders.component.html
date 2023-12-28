@@ -1,4 +1,11 @@
-<div *ngFor="let order of orders">
-    <p>{{order.externalId}}</p>
-    <a routerLink="/review/{{order.externalId}}">Leave review</a>
+<div class="products">
+    <h1 *ngIf="orders?.length == 0">Ще немає замовлень</h1>
+    <div *ngFor="let order of orders" class="container">
+        <div class="images">
+            <div *ngFor="let orderEntry of order.orderEntries" class="image" routerLink="/product/{{orderEntry.product!.externalId}}">
+                <img class="image" src="{{orderEntry.product!.imageLink}}">
+            </div>
+        </div>
+        <button routerLink="/review/{{order.externalId}}">Мій відгук</button>
+    </div>
 </div>

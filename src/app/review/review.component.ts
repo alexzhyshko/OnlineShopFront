@@ -35,7 +35,6 @@ export class ReviewComponent implements OnInit {
   this.httpClient.get<OrderDTO>("http://localhost:8081/review/form?orderExternalId=" + this.orderId, { headers: headers }).subscribe(
     data => {
       this.orderData = data;
-      //location.reload
     },
     error => console.log(error)
   )
@@ -43,12 +42,7 @@ export class ReviewComponent implements OnInit {
 
   
   ngOnInit() {
-    this.reviewForm = new FormGroup({
-      mark: new FormControl('', [Validators.required]),
-      text: new FormControl('')
-    })
-
-    
+    this.createForm();
   }
 
   sendReview() {
@@ -78,7 +72,8 @@ export class ReviewComponent implements OnInit {
         const nextIter = this.currentEntryIndex + 1;
         if(nextIter < this.orderData!.orderEntries!.length) {
           this.currentEntryIndex = nextIter
-          this.reviewForm!.reset(this.reviewForm!.value);
+          this.reviewForm!.reset();
+          this.createForm();
         } else {
           console.log("That's it, thanks for your review")
           this.router.navigate(['/']);
@@ -86,6 +81,13 @@ export class ReviewComponent implements OnInit {
       },
       error => console.log(error)
     )
+  }
+
+  createForm() {
+    this.reviewForm = new FormGroup({
+      mark: new FormControl('', [Validators.required]),
+      text: new FormControl('')
+    })
   }
 
 }

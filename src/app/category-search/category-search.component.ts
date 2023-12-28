@@ -10,33 +10,35 @@ import { CartService } from '../service/cart/cart.service';
   templateUrl: './category-search.component.html',
   styleUrl: './category-search.component.css'
 })
-export class CategorySearchComponent implements OnInit{
+export class CategorySearchComponent implements OnInit {
 
   products?: ProductDTO[];
-  category?: string;
+  category!: string;
 
-  constructor(private userService: UserService, private searchService: SearchService, 
-    private router: Router, private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(private userService: UserService, private searchService: SearchService,
+    private router: Router, private route: ActivatedRoute, private cartService: CartService) {
+    this.route.params
+      .subscribe((params) => {
+        console.log(params)
+        this.category = params['categoryId']
+      }
+      );
+  }
 
-  ngOnInit(){
-    this.route.queryParamMap
-    .subscribe((params) => {
-      this.category = params.get('category')!
-      this.searchService.searchTerm(this.category).subscribe(
-        data => this.products = data,
-        error => console.log(error)
-      )
-    }
-    ); 
+  ngOnInit() {
+    this.searchService.searchCategory(this.category).subscribe(
+      data => this.products = data,
+      error => console.log(error)
+    )
   }
 
   addToCart(id: string) {
-    if(this.userService.isLoggedIn()) {
+    if (this.userService.isLoggedIn()) {
       this.cartService.addToCart(id)?.subscribe(data => console.log(data))
     } else {
       this.router.navigate(['login'])
     }
   }
 
-  
+
 }

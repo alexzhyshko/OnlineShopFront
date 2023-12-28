@@ -1,10 +1,24 @@
-<div li *ngFor="let product of products">
-    <li>{{product.name}}</li>
-    <li>{{product.externalId}}</li>
-    <li>{{product.price}}</li>
-    <li (click)="removeFromCart(product.externalId)">Remove From Cart</li>
+<div class="products">
+    <h1 *ngIf="cartEntries.length == 0">Кошик порожній</h1>
+    <div *ngFor="let cartEntry of cartEntries" class="container">
+        <div class="image" routerLink="/product/{{cartEntry.product.externalId}}">
+            <img src="{{cartEntry.product.imageLink}}" style="width:200px">
+        </div>
+        <div class="text">
+            <h1>{{cartEntry.product.name}}</h1>
+        </div>
+        <div class="price">
+            <h1>{{cartEntry.product.price}}₴ x {{cartEntry.quantity}} = {{cartEntry.amount}}₴</h1>
+        </div>
+        <div class="remove">
+            <p><button class="button" (click)="removeFromCart(cartEntry.product.externalId)">X</button></p>
+        </div>
+    </div>
+    <h2 *ngIf="cartEntries.length > 0">Сума: {{cartTotal}}₴</h2>
 </div>
 
-<div *ngIf="products.length > 0">
-    <a (click)="checkout()">Checkout</a>
+
+<div class="bottom-buttons">
+    <button class="button wide" routerLink="/">Головна</button>
+    <button *ngIf="cartEntries.length > 0"  class="button wide"(click)="checkout()">Замовити</button>
 </div>

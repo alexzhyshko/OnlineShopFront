@@ -1,16 +1,40 @@
-<p>account works!</p>
+<div class="body">
+    <div class="form-container">
+        <form [formGroup]="accountForm" (ngSubmit)="changeData()">
+            <h3>Персональні дані</h3>
+            <div class="address-form">
+                <label class="label" for="a-6">Пошта</label>
+                <input type="text" [formControlName]="'email'" placeholder="email" id="a-6">
+                <label class="label" for="a-7">Ім'я</label>
+                <input type="text" [formControlName]="'firstName'" placeholder="firstName" id="a-7">
+                <label class="label" for="a-8">Прізвище</label>
+                <input type="text" [formControlName]="'lastName'" placeholder="lastName" id="a-8">
+                <label class="label" for="a-0">Вулиця</label>
+                <input class="text" type="text" [formControlName]="'streetName'" placeholder="streetName" id="a-0">
+                <label class="label" for="a-1">Номер будинку</label>
+                <input class="text" type="number" [formControlName]="'streetNumber'" placeholder="streetNumber"
+                    id="a-1">
+                <label class="label" for="a-2">Додаток</label>
+                <input class="text" type="text" [formControlName]="'streetAdditive'" placeholder="streetAdditive"
+                    id="a-2">
+                <label class="label" for="a-3">Кімната/офіс/приміщення</label>
+                <input class="text" type="text" [formControlName]="'room'" placeholder="room" id="a-3">
+                <label class="label" for="a-4">Місто</label>
+                <input class="text" type="text" [formControlName]="'city'" placeholder="city" id="a-4">
+                <label class="label" for="a-5">Додаткова інформація</label>
+                <input class="text" type="text" [formControlName]="'additionalInfo'" placeholder="additionalInfo"
+                    id="a-5">
+            </div>
+            <div class="bottom-buttons">
+                <button class="button wide" (click)="resetForm()">Скасувати зміни</button>
+                <input class="button wide" type="submit" value="Зберегти" />
+            </div>
+        </form>
+    </div>
 
-<form [formGroup]="accountForm" (ngSubmit)="changeData()">
-    <input type="text" [formControlName]="'email'" placeholder="email">
-    <input type="text" [formControlName]="'firstName'" placeholder="firstName">
-    <input type="text" [formControlName]="'lastName'" placeholder="lastName">
-    <input type="text" [formControlName]="'streetName'" placeholder="streetName">
-    <input type="text" [formControlName]="'streetNumber'" placeholder="streetNumber">
-    <input type="text" [formControlName]="'streetAdditive'" placeholder="streetAdditive">
-    <input type="text" [formControlName]="'room'" placeholder="room">
-    <input type="text" [formControlName]="'city'" placeholder="city">
-    <input type="text" [formControlName]="'additionalInfo'" placeholder="additionalInfo">
-    <input type="submit" value="Change"/>
-</form> 
+    <div class="past-orders">
+        <h3>Мої замовлення</h3>
+        <app-past-orders></app-past-orders>
+    </div>
 
-<a routerLink="/past-orders">See past orders</a>
+</div>

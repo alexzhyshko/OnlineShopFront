@@ -1,1 +1,47 @@
-<p>order-confirmation works!</p>
+<div class="products">
+    <h2>Товари</h2>
+    <h1 *ngIf="order.orderEntries!.length == 0">Кошик порожній</h1>
+    <div *ngFor="let orderEntry of order.orderEntries" class="container">
+        <div class="image" routerLink="/product/{{orderEntry.product!.externalId}}">
+            <img src="{{orderEntry.product!.imageLink}}" style="width:200px">
+        </div>
+        <div class="text">
+            <h1>{{orderEntry.product!.name}}</h1>
+        </div>
+        <div class="price">
+            <h1>{{orderEntry.product!.price}}₴ x {{orderEntry.quantity}} = {{orderEntry.amount}}₴</h1>
+        </div>
+    </div>
+    <h2>Сума: {{orderTotal}}₴</h2>
+</div>
+<div class="personal">
+    <h2>Деталі</h2>
+    <div class="address-form">
+        <label class="label">Пошта</label>
+        <label class="label">{{order.owner?.email}}</label>
+
+        <label class="label">Ім'я</label>
+        <label class="label">{{order.owner?.firstName}}</label>
+
+        <label class="label">Прізвище</label>
+        <label class="label">{{order.owner?.lastName}}</label>
+
+        <label class="label">Вулиця</label>
+        <label class="label">{{order.address?.streetName}}</label>
+
+        <label class="label">Номер будинку</label>
+        <label class="label">{{order.address?.streetNumber}}</label>
+
+        <label class="label" *ngIf="order.address?.streetName != null">Додаток</label>
+        <label class="label" *ngIf="order.address?.streetName != null">{{order.address?.streetAdditive}}</label>
+
+        <label class="label">Кімната/офіс/приміщення</label>
+        <label class="label">{{order.address?.room}}</label>
+
+        <label class="label">Місто</label>
+        <label class="label">{{order.address?.city}}</label>
+
+        <label class="label" *ngIf="order.address?.additionalInfo != null">Додаткова інформація</label>
+        <label class="label" *ngIf="order.address?.additionalInfo != null">{{order.address?.additionalInfo}}</label>
+    </div>
+</div>

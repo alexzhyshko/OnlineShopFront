@@ -1,0 +1,102 @@
+.products {
+    padding: 20px;
+    border-top: 3px solid #081544;
+}
+
+.container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    column-gap: 5px;
+    border: 2px solid #081544;
+    padding: 10px;
+}
+
+img {
+    max-width: 100px;
+}
+
+h1{
+    font-size: 20px;
+}
+
+.button {
+    transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    border: none;
+    outline: 0;
+    color: white;
+    background-color: #081544;
+    border: 1px solid;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    width: 25px;
+    padding: 5px;
+}
+
+.button:hover {
+    transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    background-color: white;
+    color: #081544;
+    opacity: 0.7;
+}
+
+.image {
+    cursor: pointer;
+}
+
+a {
+    color: #081544;
+    text-decoration: none;
+}
+
+.bottom-buttons {
+    margin-left: 50em;
+    margin-top: 40px;
+}
+
+.wide {
+    width: 200px;
+    margin-right: 20px;
+}
+
+.form-container {
+    padding: 30px;
+}
+
+.address-form {
+    display: grid;
+    align-items: center;
+    column-gap: 5px;
+    grid-template-columns: repeat(2, 200px);
+}
+
+.address-form input {
+    margin-bottom: 4px;
+    border: none;
+    border-bottom: 1px solid #081544;
+    
+}
+
+.address-form input:focus {
+    outline: none;
+    border-right: 2px solid #081544;
+    transition: all 0.2s;
+}
+
+
+.address-choice {
+    display: grid;
+    align-items: center;
+    column-gap: 5px;
+    grid-template-columns: 40px 300px;
+}
+
+.address-choice .radio{
+    width: 40px;
+}
+
+.address-choice .text{
+    width: 200px;
+}

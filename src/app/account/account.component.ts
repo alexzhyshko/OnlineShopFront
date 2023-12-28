@@ -11,7 +11,6 @@ import { AddressDTO } from '../dto/account/AddressDTO';
   styleUrl: './account.component.css'
 })
 export class AccountComponent implements OnInit {
-
   accountForm!: FormGroup;
 
   currentUser!: UserDTO;
@@ -25,17 +24,7 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.accountForm = new FormGroup({
-      email: new FormControl(this.currentUser.email, [Validators.required, Validators.email]),
-      firstName: new FormControl(this.currentUser.firstName, [Validators.required, Validators.email]),
-      lastName: new FormControl(this.currentUser.lastName, [Validators.required]),
-      streetName: new FormControl(this.currentUser.address?.streetName, [Validators.required]),
-      streetNumber: new FormControl(this.currentUser.address?.streetNumber, [Validators.required]),
-      streetAdditive: new FormControl(this.currentUser.address?.streetAdditive, [Validators.required]),
-      room: new FormControl(this.currentUser.address?.room, [Validators.required]),
-      city: new FormControl(this.currentUser.address?.city, [Validators.required]),
-      additionalInfo: new FormControl(this.currentUser.address?.additionalInfo, [Validators.required])
-    })
+    this.createForm();
   }
 
   changeData() {
@@ -64,18 +53,37 @@ export class AccountComponent implements OnInit {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${this.userService.getToken()}`
       });
-      this.httpClient.put("http://localhost:8081/account/change", this.userData, {headers: headers}).subscribe(
+      this.httpClient.put("http://localhost:8081/account/change", this.userData, { headers: headers }).subscribe(
         data => console.log("Personal Data updated"),
         error => error
       )
-      this.httpClient.put("http://localhost:8081/account/address", this.addressData, {headers: headers}).subscribe(
+      this.httpClient.put("http://localhost:8081/account/address", this.addressData, { headers: headers }).subscribe(
         data => console.log("Address Data updated"),
         error => error
       )
-      
+
     }
 
 
+  }
+
+  createForm() {
+    this.accountForm = new FormGroup({
+      email: new FormControl(this.currentUser.email, [Validators.required, Validators.email]),
+      firstName: new FormControl(this.currentUser.firstName, [Validators.required, Validators.email]),
+      lastName: new FormControl(this.currentUser.lastName, [Validators.required]),
+      streetName: new FormControl(this.currentUser.address?.streetName, [Validators.required]),
+      streetNumber: new FormControl(this.currentUser.address?.streetNumber, [Validators.required]),
+      streetAdditive: new FormControl(this.currentUser.address?.streetAdditive, [Validators.required]),
+      room: new FormControl(this.currentUser.address?.room, [Validators.required]),
+      city: new FormControl(this.currentUser.address?.city, [Validators.required]),
+      additionalInfo: new FormControl(this.currentUser.address?.additionalInfo, [Validators.required])
+    })
+  }
+
+  resetForm() {
+    this.accountForm!.reset();
+    this.createForm();
   }
 
 }

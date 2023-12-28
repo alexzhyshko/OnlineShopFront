@@ -1,8 +1,30 @@
-<div>
+<!-- <div>
     <p>{{orderData!.orderEntries![currentEntryIndex].product?.name}}</p>
     <form [formGroup]="reviewForm" (ngSubmit)="sendReview()">
-    <input type="text" [formControlName]="'mark'" placeholder="Mark">
-    <input type="text" [formControlName]="'text'" placeholder="Text">
-    <input type="submit" value="Review">
+        <input type="text" [formControlName]="'mark'" placeholder="Mark">
+        <textarea [formControlName]="'text'" rows="5" cols="33" placeholder="Text"></textarea>
+        <input type="submit" value="Review">
+    </form>
+</div> -->
+
+
+
+<form [formGroup]="reviewForm" (ngSubmit)="sendReview()" class="form-container">
+    <div>
+        <img class="image" src="{{orderData!.orderEntries![currentEntryIndex].product?.imageLink}}">
+        <h3>Відгук на товар: {{orderData!.orderEntries![currentEntryIndex].product?.name}}</h3>
+    </div>
+   
+    
+    <div class="address-form">
+        <label class="label" for="a-0">Оцінка</label>
+        <input type="number" [formControlName]="'mark'" placeholder="Mark" id="a-0" min="-2" max="2">
+        <label class="label" for="a-1">Відгук</label>
+        <textarea [formControlName]="'text'" rows="5" cols="33" placeholder="Text" id="a-1"></textarea>
+    </div>
+    <br>
+    <div class="bottom-buttons">
+        <input class="button wide" type="submit" value="Далі">
+    </div>
+
 </form>
-</div>

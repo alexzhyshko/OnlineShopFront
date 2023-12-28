@@ -1,5 +1,11 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-    <input type="text" [formControlName]="'email'">
-    <input type="password" [formControlName]="'password'">
-    <input type="submit" value="Log in"/>
-</form> 
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+            <h1>ЛІТЕРАТОР</h1>
+            <input type="text" placeholder="Пошта" [formControlName]="'email'" />
+            <input type="password" placeholder="Пароль" [formControlName]="'password'" />
+            <input class="button" type="submit" value="Увійти" />
+            <a routerLink="/register" class="message">Немає акаунта?</a>
+        </form>
+    </div>
+</div>

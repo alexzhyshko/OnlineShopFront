@@ -1,6 +1,14 @@
-<div li *ngFor="let product of products">
-    <li>{{product.name}}</li>
-    <li>{{product.externalId}}</li>
-    <li>{{product.price}}</li>
-    <li (click)="addToCart(product.externalId)">Add to cart</li>
+<div class="body">
+    <h2 class="title">Товари категорії</h2>
+    <div class="Items">
+        <div *ngFor="let product of products" class="card Item">
+            <a routerLink="/product/{{product.externalId}}">
+                <img src="{{product.imageLink}}" style="width:200px">
+                <h1 class="text">{{product.name}}</h1>
+                <p class="price text">{{product.price}}₴</p>
+            </a>
+            <p><button (click)="addToCart(product.externalId)">Додати у кошик</button></p>
+        </div>
+
+    </div>
 </div>
